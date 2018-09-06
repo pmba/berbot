@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const Key = require('./keys.js');
 
 client.on('ready', () => {
 	console.log(`Logado como ${client.user.tag}!`);
