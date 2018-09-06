@@ -4,7 +4,7 @@
   "description": "",
   "main": "bot.js",
   "scripts": {
-    "start": "BOT_TOKEN=NDEwNjEzNTg4MTkzOTY4MTI4.DnLqpA.u50a246AJjjpzjCWUzJM3NHreYU node bot.js"
+    "start": "node bot.js"
   },
   "author": "",
   "license": "ISC",

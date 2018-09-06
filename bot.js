@@ -11,4 +11,4 @@ client.on('message', msg => {
 	}
 });
 
-client.login(process.env.BOT_TOKEN);
+client.login('NDEwNjEzNTg4MTkzOTY4MTI4.DnLqpA.u50a246AJjjpzjCWUzJM3NHreYU');
