@@ -4,11 +4,15 @@
   "description": "",
   "main": "bot.js",
   "scripts": {
-    "start": "node bot.js"
+    "start": "node bot.js",
+    "dev": "nodemon bot.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.4.2"
+    "discord.js": "^11.4.2",
+    "dotenv": "^6.0.0",
+    "nodemon": "^1.18.4",
+    "request": "^2.88.0"
   }
 }
