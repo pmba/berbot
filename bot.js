@@ -62,12 +62,12 @@ client.on('message', (msg) => {
 			msg.channel.send(embed);
 		} else {
 			fmt_msg.splice(0, 1);
-			var champion_nick = fmt_msg.join(" ");
-			var encoded_champion_nick = encodeURI(champion_nick);
+			var player_nick = fmt_msg.join(" ");
+			var encoded_player_nick = encodeURI(player_nick);
 
 			var options = { 
 				method: 'GET',
-				url: 'https://br1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + encoded_champion_nick,
+				url: 'https://br1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + encoded_player_nick,
 				headers: { 
 					'Cache-Control': 'no-cache',
 					'Accept-Charset': 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -82,9 +82,11 @@ client.on('message', (msg) => {
 				body = JSON.parse(body);
 	
 				if (body.status) {
-					const embed = create_embed('USUÁRIO INVÁLIDO', `Úsuario (${champion_nick}) não encontrado.`, 'warning');
+					const embed = create_embed('USUÁRIO INVÁLIDO', `Úsuario (${player_nick}) não encontrado.`, 'warning');
 					msg.channel.send(embed);
 				} else {
+					
+
 					const embed = new RichEmbed({
 						'title': body.name,
 						'color': 0x25ce41,
