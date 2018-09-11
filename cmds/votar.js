@@ -25,7 +25,6 @@ module.exports.run = async(client, message, args) => {
     let yesCollector = poll.createReactionCollector(yesFilter, { time: 60000 });
     
     yesCollector.on('collect', vote => {
-        console.log(vote);
         console.log(`VOTAÇÃO (${args.join(' ')}), +1 Sim.`);
     });
 
