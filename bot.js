@@ -42,7 +42,10 @@ client.on('message', async msg => {
 
 	let runnableCommand = command.replace(prefix, '');
 	let cmd = client.commands.get(runnableCommand);
-	if (cmd) cmd.run(client, msg, args);
+	if (cmd) {
+		console.log(`COMANDO: ${command} EXECUTADO`);
+		cmd.run(client, msg, args);
+	}
 });
 
 client.login(process.env.BOT_TOKEN);
