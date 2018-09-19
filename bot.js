@@ -1,8 +1,8 @@
 const { Client, Attachment, RichEmbed, Collection } = require('discord.js');
 const fs = require('fs');
-const client = new Client({disableEveryone: true});
 
-const botConfig =  require('./botConfig');
+const client = new Client({disableEveryone: true});
+const botConfig = require('./botConfig');
 
 client.commands = new Collection();
 
@@ -31,10 +31,25 @@ client.on('ready', () => {
 });
 
 var prefix = botConfig.prefix;
+var botid = botConfig.id;
 
 client.on('message', async msg => {
 
+	let sender = msg.author;
+
+	if (sender.id === botid) {
+		return;
+	}
+
 	let messageArray = msg.content.split(/\s+/g);
+	let messageLower = msg.content.toLowerCase();
+	let messageLowerArray = messageLower.split(/\s+/g);
+
+	if (messageLowerArray.includes('bolsonaro')) {
+		msg.delete();
+		msg.channel.send(`${sender}, tentou falar do bononaro... :poop:`);
+	}
+
 	let command = messageArray[0];
 	let args = messageArray.slice(1);
 
@@ -48,4 +63,4 @@ client.on('message', async msg => {
 	}
 });
 
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN)
