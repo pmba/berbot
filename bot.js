@@ -4,6 +4,8 @@ const fs = require('fs');
 const client = new Client({disableEveryone: true});
 const botConfig = require('./botConfig');
 
+const badWord = require('./utilities/badword');
+
 client.commands = new Collection();
 
 fs.readdir('./cmds/', (err, files) => {
@@ -28,6 +30,8 @@ require('dotenv').config();
 
 client.on('ready', () => {
 	console.log(`\nBerbot está ativo.`);
+
+    client.user.setStatus('away');
 });
 
 var prefix = botConfig.prefix;
@@ -42,13 +46,8 @@ client.on('message', async msg => {
 	}
 
 	let messageArray = msg.content.split(/\s+/g);
-	let messageLower = msg.content.toLowerCase();
-	let messageLowerArray = messageLower.split(/\s+/g);
 
-	if (messageLowerArray.includes('bolsonaro')) {
-		msg.delete();
-		msg.channel.send(`${sender}, tentou falar do bononaro... :poop:`);
-	}
+	badWord.run(client, msg);
 
 	let command = messageArray[0];
 	let args = messageArray.slice(1);

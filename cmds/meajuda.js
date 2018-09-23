@@ -20,8 +20,7 @@ module.exports.run = async (client, message, args) => {
             cmdUsage += '`'+prefix+cmd.help.name+' '+ arg +'` \n';
         });
         
-        commands.addBlankField(true);
-        commands.addField(`${prefix}${cmd.help.name}`, `${cmd.help.information} \n ${cmdUsage}`);
+        commands.addField(`${prefix}${cmd.help.name}`, `${cmd.help.information} \n ${cmdUsage}\n`);
     });
 
     if (args.length <= 0) {
