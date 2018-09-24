@@ -5,9 +5,11 @@ module.exports.run = async (client, message, args) => {
 
     if (message.mentions.users.first()) {
         await message.channel.send(new Discord.RichEmbed()
+            .setColor(client.colors.get('white'))
             .setImage(message.mentions.users.first().displayAvatarURL));
     } else {
         await message.channel.send(new Discord.RichEmbed()
+            .setColor(client.colors.get('white'))
             .setImage(message.author.displayAvatarURL));
     }
 

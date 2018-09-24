@@ -1,0 +1,16 @@
+{
+    "white": "#e0e0e0",
+    "twitch": "#6441a5",
+    "red": "#e53935",
+    "pink": "#d81b60",
+    "blue": "#1976d2",
+    "green": {
+        "darken": "#43a047",
+        "light": "#76ff03"
+    },
+    "yellow": "#fdd835",
+    "orange": {
+        "darken": "#fb8c00",
+        "deep": "#ff3d00"
+    }
+}

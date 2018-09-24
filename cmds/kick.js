@@ -1,5 +1,5 @@
 const Discord = module.require('discord.js');
-const InvalidFormat = module.require('../msgs/invalidFomat');
+const InvalidFormat = module.require('../utilities/exceptions/invalidFormat.js');
 
 module.exports.run = async (client, message, args) => {
     let role = message.member.roles;
@@ -24,12 +24,12 @@ module.exports.run = async (client, message, args) => {
         } else {
             message.channel.send(new Discord.RichEmbed()
                 .setTitle('Não Permitido')
-                .setColor('#ff3111')
+                .setColor(client.colors.get('red'))
                 .setDescription('Você não tem permissão suficiente para me obrigar a fazer isso. :kissing_smiling_eyes:')
             );
         }
     } else {
-        message.channel.send(await InvalidFormat.run(message, '<MENÇÃO DO USUÁRIO>'));      
+        message.channel.send(await InvalidFormat.create(this));
     }
         
 }

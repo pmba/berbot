@@ -5,7 +5,7 @@ module.exports.run = async(client, message, args) => {
         .setTitle('Pong! :ping_pong:')
         .setDescription('Brincadeirinha :poop:')
         .addField('Seu Ping', `${client.ping}ms`)
-        .setColor('#59ff00'));
+        .setColor(client.colors.get('green').light));
 }
 
 module.exports.help = {

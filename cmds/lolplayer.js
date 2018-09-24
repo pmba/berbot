@@ -1,10 +1,10 @@
 const Discord = module.require('discord.js');
-const InvalidFormat = module.require('../msgs/invalidFomat');
 const Request = module.require('request');
+const InvalidFormat = module.require('../utilities/exceptions/invalidFormat.js');
 
 module.exports.run = async (client, message, args) => {
     if (args.length <= 0) {
-        message.channel.send(await InvalidFormat.run(message, '<USUÁRIO DO LOL>'));   
+        message.channel.send(await InvalidFormat.create(this));   
     } else {
 
         let playerNick = args.join(" ");
@@ -32,12 +32,12 @@ module.exports.run = async (client, message, args) => {
                 await message.channel.send(new Discord.RichEmbed()
                     .setTitle('Usuário não encontrado')
                     .setDescription('Não foi possivel encontrar esse usuário :confused:')
-                    .setColor('#ff3111'));
+                    .setColor(client.colors.get('red')));
             } else {
                 
                 await message.channel.send(new Discord.RichEmbed()
                     .setTitle(body.name)
-                    .setColor('#0055ff')
+                    .setColor(client.colors.get('blue'))
                     .addField('Level', body.summonerLevel)
                     .setThumbnail(`http://ddragon.leagueoflegends.com/cdn/8.17.1/img/profileicon/${body.profileIconId}.png`));
             
@@ -52,7 +52,7 @@ module.exports.run = async (client, message, args) => {
                         message.channel.send(new Discord.RichEmbed()
                             .setTitle('Informações de Ranked')
                             .setDescription('Usuário não está qualificado em nenhum tier.')
-                            .setColor('#ff3111'));
+                            .setColor(client.colors.get('orange').deep));
                     } else {
                         body2.forEach(async queue => {
                             let queueName, queueTier;
@@ -92,7 +92,7 @@ module.exports.run = async (client, message, args) => {
 
                             
                             await message.channel.send(new Discord.RichEmbed()
-                                .setColor("#e5ff00")
+                                .setColor(client.colors.get('yellow'))
                                 .setTitle(queueName)
                                 .setThumbnail(queueTier)
                                 .setDescription(queue.leagueName)

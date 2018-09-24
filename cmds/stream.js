@@ -1,10 +1,10 @@
 const Discord = module.require('discord.js');
-const InvalidFormat = module.require('../msgs/invalidFomat');
 const Request = module.require('request');
+const InvalidFormat = module.require('../utilities/exceptions/invalidFormat.js');
 
 module.exports.run = async (client, message, args) => {
     if (args.length <= 0) {
-        message.channel.send(await InvalidFormat.run(message, '<USUÁRIO DA TWITCH>'));   
+        message.channel.send(await InvalidFormat.create(this));   
     } else {
         let options = {
             method: 'GET',
@@ -28,13 +28,13 @@ module.exports.run = async (client, message, args) => {
                 await message.channel.send(new Discord.RichEmbed()
                     .setURL(streamURL)
                     .setTitle(`Twitch.tv/${args[0]}`)
-                    .setColor("#ff3111")
+                    .setColor(client.colors.get('twitch'))
                     .setDescription(`Stream não está online no momento :confused:`));
             } else {
                 let streamInfo = body.data[0];
 
                 await message.channel.send(new Discord.RichEmbed()
-                    .setColor("#00f254")
+                    .setColor(client.colors.get('twitch'))
                     .setDescription('A stream está online :ok_hand:')
                     .setTitle(streamInfo.title)
                     .addField("Viewers", streamInfo.viewer_count)

@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
     let commands = await new Discord.RichEmbed()
         .setTitle('Berbot Comandos')
         .setDescription('Quais comandos eu posso executar?')
-        .setColor('#027af9')
+        .setColor(client.colors.get('blue'))
         .setFooter('Me use com sabedoria.', 'https://cdn.discordapp.com/avatars/410613588193968128/4278f4541c3d113972fa43f5cc2a93a3.png?size=2048');
     
     await client.commands.forEach(cmd => {
@@ -20,7 +20,7 @@ module.exports.run = async (client, message, args) => {
             cmdUsage += '`'+prefix+cmd.help.name+' '+ arg +'` \n';
         });
         
-        commands.addField(`${prefix}${cmd.help.name}`, `${cmd.help.information} \n ${cmdUsage}\n`);
+        commands.addField(`${prefix}${cmd.help.name}`, `${cmd.help.information} \n ${cmdUsage}\n\n`);
     });
 
     if (args.length <= 0) {

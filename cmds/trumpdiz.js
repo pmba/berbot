@@ -29,7 +29,7 @@ module.exports.run = async(client, message, args) => {
         message.channel.send(new Discord.RichEmbed()
             .setTitle('From: **Donald Trump**')
             .setDescription(body.message)
-            .setColor('#e5e5e5')
+            .setColor(client.colors.get('white'))
             .setThumbnail('https://www.gannett-cdn.com/presto/2018/09/09/USAT/59bcb336-865e-47de-baa5-f1c319c056fe-AFP_AFP_18X75M.JPG?width=534&height=401&fit=bounds&auto=webp')
         );
     });

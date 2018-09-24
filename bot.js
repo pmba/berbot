@@ -3,27 +3,43 @@ const fs = require('fs');
 
 const client = new Client({disableEveryone: true});
 const botConfig = require('./botConfig');
+const color = require('./utilities/design/colors.json');
 
 const badWord = require('./utilities/badword');
 
 client.commands = new Collection();
+client.colors = new Collection();
 
 fs.readdir('./cmds/', (err, files) => {
 	if (err) console.error(err);
 
 	let jsFiles = files.filter(f => f.split('.').pop() === 'js');
 	if (jsFiles.length <= 0) {
-		console.log('Não existe nenhum comando para carregar.');
-		return;
+		console.log('\nNão existe nenhum comando para carregar.');
+	} else {
+		console.log(`\nCarregando ${jsFiles.length} comandos...`);
+	
+		jsFiles.forEach((f, i) => {
+			let props = require(`./cmds/${f}`);
+			console.log(`${i + 1}: ${f} Carregado com sucesso!`);
+			client.commands.set(props.help.name, props);
+		});
 	}
 
-	console.log(`Carregando ${jsFiles.length} comandos...`);
+	let colorLength = Object.keys(color).length;
 
-	jsFiles.forEach((f, i) => {
-		let props = require(`./cmds/${f}`);
-		console.log(`${i + 1}: ${f} Carregado com sucesso!`);
-		client.commands.set(props.help.name, props);
-	});
+	if (colorLength <= 0) {
+		console.log('Não existe nenhuma cor para carregar.');
+	} else {
+		console.log(`\nCarregando ${colorLength} cores...`);
+		
+		let i = 1;
+
+		for (var c in color) {
+			client.colors.set(c, color[c]);
+			console.log(`${i++}: Cor ${c} Carregada com sucesso!`);
+		}
+	}
 });
 
 require('dotenv').config();

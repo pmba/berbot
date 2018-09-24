@@ -37,7 +37,7 @@ module.exports.run = async(client, message, args) => {
 
             message.channel.send(new Discord.RichEmbed()
                 .setTitle('Nick Gerado')
-                .setColor('#ffcb11')
+                .setColor(client.colors.get('yellow'))
                 .addField('Resultado', body)
             );
         });
