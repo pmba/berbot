@@ -2,7 +2,7 @@ const Discord = module.require('discord.js');
 const Path = module.require('path');
 
 module.exports.run = async (client, message, args) => {
-    message.mentions.users.first().voiceChannel.join()
+    message.member.voiceChannel.join()
     .then(async connection => {
         const broadcast = client.createVoiceBroadcast();
         broadcast.playFile(Path.join(__dirname, '../files/gnome.mp3'));
