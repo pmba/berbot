@@ -10,13 +10,13 @@ module.exports.run = async (client, message, args) => {
             connection.playBroadcast(broadcast);
         }
     });
+
 }
 
 module.exports.help = {
     name: 'gnome',
     information: 'UHUHUHUHU, I\'M A GNOME!',
     usage: [
-        ' ',
-        '<MENÇÃO DO USUÁRIO>'
+        ' '
     ]
 }
