@@ -2,8 +2,15 @@ const Discord = module.require('discord.js');
 const Path = module.require('path');
 
 module.exports.run = async (client, message, args) => {
-    message.member.voiceChannel.join()
-    .then(async connection => {
+    var channel;
+
+    if (message.mentions.users.first()) {
+        channel = message.mentions.users.first().voiceChannel.join();
+    } else {
+        channel = message.member.voiceChannel.join();
+    }
+    
+    channel.then(async connection => {
         const broadcast = client.createVoiceBroadcast();
         broadcast.playFile(Path.join(__dirname, '../files/gnome.mp3'));
         for (const connection of client.voiceConnections.values()) {
@@ -17,6 +24,7 @@ module.exports.help = {
     name: 'gnome',
     information: 'UHUHUHUHU, I\'M A GNOME!',
     usage: [
-        ' '
+        ' ',
+        '<MENÇÃO DO USUÁRIO>'
     ]
 }
