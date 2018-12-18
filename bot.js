@@ -46,8 +46,7 @@ require('dotenv').config();
 
 client.on('ready', () => {
 	console.log(`\nBerbot está ativo.`);
-
-    client.user.setStatus('away');
+	client.user.setActivity('xesquedele');
 });
 
 var prefix = botConfig.prefix;

@@ -11,11 +11,12 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^11.4.2",
-    "dotenv": "^6.0.0",
-    "express": "^4.16.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
     "fs": "0.0.1-security",
-    "nodemon": "^1.18.4",
+    "nodemon": "^1.18.9",
     "opusscript": "0.0.6",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "ytdl-core": "^0.28.3"
   }
 }
